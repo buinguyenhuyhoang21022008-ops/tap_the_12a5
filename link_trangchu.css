@@ -1,0 +1,111 @@
+/*Bố cục phần tiêu đề*/
+.header{
+    background-image: url("backgroundheader.jpg");
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 50px;
+}
+
+/*Bố cục thanh điều hướng*/
+.searchbox{
+    background-image: url("backgroundfind.jpg");
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 20px;
+}
+
+/*Bố cục phần thân trang*/
+.body{
+    background-image: url("body.jpg");
+    background-size: cover;
+    color: rgb(12, 177, 136);
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 500px;
+}
+
+/*Phần kết trang*/
+.end{
+    background-image: url("end.jpg");
+    background-size: cover;
+    color: white;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 100px;
+}
+
+/*Màu nền phần thân web*/
+.body1{
+    background-image: url("backgroundbody.jpg");
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 200px;
+    color:rgb(11, 220, 175);
+}
+.body2{
+    background-image: url("backgroundbody.jpg");
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    border-style: solid;
+    border-radius: 10px;
+    height: 500px;
+    color:white;
+}
+
+/*Kiểu chữ*/
+.type_font1{
+    color:#190bd8;
+    text-align: center;
+}
+.type_font2{
+    color:rgb(222, 6, 197);
+}
+
+.container{
+    display: flex;
+    gap:20px;
+    padding:20px;
+}
+.left{
+    flex-basis: 70%;
+}
+.right{
+    flex-basis: 30%;
+}
+.right img{
+    width: 100%;
+    max-width: 300px;       /* ảnh không quá to */
+    border-radius: 15px;
+}
