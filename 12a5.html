@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Web Lớp Học Galaxy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Toàn bộ nền vũ trụ 4K */
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            line-height: 1.6; 
+            margin: 0; 
+            padding: 0; 
+            background: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2022&auto=format&fit=crop') no-repeat center center fixed; 
+            background-size: cover;
+            color: #e0e0e0;
+            overflow-x: hidden;
+        }
+
+        /* Lớp phủ mờ giúp text dễ đọc hơn trên nền sao */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* Header phong cách tinh vân */
+        header { 
+            background: rgba(44, 62, 80, 0.3); 
+            backdrop-filter: blur(10px);
+            color: #fff; 
+            padding: 4rem 2rem; 
+            text-align: center; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 { 
+            font-family: 'Orbitron', sans-serif; 
+            font-size: 3rem;
+            text-shadow: 0 0 20px #8e44ad, 0 0 40px #3498db;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+        }
+
+        /* Thanh điều hướng xuyên thấu */
+        nav { 
+            background: rgba(20, 20, 40, 0.8); 
+            padding: 15px; 
+            text-align: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(142, 68, 173, 0.5);
+        }
+
+        nav a { 
+            color: #00d4ff; 
+            margin: 0 15px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-family: 'Orbitron', sans-serif;
+            transition: 0.3s;
+            text-shadow: 0 0 5px rgba(0, 212, 255, 0.5);
+        }
+
+        nav a:hover { color: #ff00ff; text-shadow: 0 0 15px #ff00ff; }
+
+        section { padding: 60px 10%; }
+
+        h2 { 
+            font-family: 'Orbitron', sans-serif;
+            border-bottom: 2px solid #8e44ad; 
+            padding-bottom: 10px; 
+            color: #00d4ff; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            text-transform: uppercase;
+        }
+        
+        /* Ban cán sự & Thẻ - Hiệu ứng kính mờ (Glassmorphism) */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 20px; }
+        
+        .card { 
+            background: rgba(255, 255, 255, 0.05);
+padding: 20px; 
+            border-radius: 15px; 
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+        }
+
+        .card:hover { 
+            transform: translateY(-10px); 
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid #8e44ad;
+        }
+
+        .card strong { display: block; color: #f39c12; margin-bottom: 5px; font-family: 'Orbitron', sans-serif; }
+
+        /* Học tập */
+        .link-box { 
+            background: rgba(52, 152, 219, 0.1); 
+            padding: 20px; 
+            border-radius: 15px; 
+            margin-bottom: 20px; 
+            border-left: 5px solid #00d4ff;
+        }
+
+        .btn-link { 
+            display: inline-block; 
+            padding: 10px 25px; 
+            background: linear-gradient(45deg, #8e44ad, #3498db); 
+            color: white; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            box-shadow: 0 0 15px rgba(142, 68, 173, 0.6);
+        }
+
+        /* Kỷ niệm */
+        .memory-item { 
+            margin-bottom: 40px; 
+            background: rgba(0, 0, 0, 0.3); 
+            padding: 20px; 
+            border-radius: 20px; 
+            text-align: center; 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .memory-item img { 
+            max-width: 100%; 
+            height: auto; 
+            border-radius: 15px; 
+            margin-bottom: 15px; 
+            filter: brightness(0.9) contrast(1.1);
+            border: 2px solid rgba(142, 68, 173, 0.3);
+        }
+
+        .caption { font-style: italic; color: #bdc3c7; }
+
+        /* Cảm nghĩ */
+        .thought-box { 
+            background: rgba(20, 20, 20, 0.6); 
+            padding: 15px; 
+            border: 1px solid rgba(0, 212, 255, 0.3); 
+            border-radius: 12px; 
+            color: white;
+        }
+
+        .thought-box textarea { 
+            width: 100%; 
+            height: 80px; 
+            background: rgba(0,0,0,0.3); 
+            border: 1px solid rgba(255,255,255,0.1); 
+            color: #00d4ff;
+            resize: none; 
+            margin-top: 10px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .thought-box button { 
+            width: 100%; 
+            cursor: pointer; 
+            background: #8e44ad; 
+            color: white; 
+            border: none; 
+            padding: 8px; 
+            border-radius: 5px; 
+            font-family: 'Orbitron', sans-serif;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .thought-box button:hover { background: #9b59b6; box-shadow: 0 0 15px #9b59b6; }
+
+        footer {
+            background: rgba(10, 10, 20, 0.9);
+            color: #7f8c8d;
+            text-align: center;
+padding: 30px;
+            font-family: 'Orbitron', sans-serif;
+            border-top: 1px solid rgba(142, 68, 173, 0.3);
+        }
+
+        /* Scrollbar vũ trụ */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #1a1a2e; }
+        ::-webkit-scrollbar-thumb { background: #8e44ad; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>HÀNH TINH LỚP 12A5 CỦA CHÚNG TA</h1>
+    <p>Khám phá những vì sao rực rỡ nhất trong dải ngân hà này</p>
+</header>
+
+<nav>
+    <a href="#giaovien">GIÁO VIÊN</a>
+    <a href="#bancansu">BAN CÁN SỰ</a>
+    <a href="#hoctap">HỌC TẬP</a>
+    <a href="#kyniem">KỶ NIỆM</a>
+    <a href="#camnghi">CẢM NGHĨ</a>
+</nav>
+
+<section id="giaovien">
+    <h2>Thuyền Trưởng Dẫn Đường</h2>
+    <div class="card">
+        <h3>GVCN: NGUUYỄN THỊ TUYẾT SƯƠNG</h3>
+        <p>Lời nhắn nhủ: "Tận tâm trong giảng dạy, đồng hành cùng học sinh trên con đường tri thức bao la."</p>
+         <h4>GVBM TOÁN:Nguyễn Minh Hiếu</h4>
+        <h4>GVBM VĂN:Nguyễn Thị Tuyết Sương</h4>
+        <h4>GVBM TIN:Lê Thị Mỹ Hạnh</h4>
+        <h4>GVBM LÝ:Nguyễn Trương Minh Tâm </h4>
+        <h4>GVBM HÓA:Nguyễn Hồ Bảo Trâm</h4>
+        <h4>GVBM SỬ:Trần Thị Thu Lan</h4>
+        <h4>GVBM ANH:Nguyễn Thị Phương Thảo</h4>
+        <h4>GVBM GDQP : NguyễnTrung</h4>
+        <h4>GVBM CÔNG NGHỆ:Đặng Minh Cường</h4>
+        <h4>GVBM GDTC: Trần Trung Kiên</h4>
+        <h4>GVBM GDĐP I:Nguyễn Thị Thanh Kiều</h4>
+        <h4>GVBM GDĐP II:Trương Thị Thanh Nguyên</h4>
+    </div>
+</section>
+
+<section id="bancansu">
+    <h2>Hệ Thống Điều Hành</h2>
+    <div class="grid-container">
+        <div class="card"><strong>LỚP TRƯỞNG:</strong> TRẦN ĐĂNG KHOA</div>
+        <div class="card"><strong>BÍ THƯ:</strong> TRẦN HUỲNH NHƯ</div>
+        <div class="card"><strong>LỚP PHÓ HỌC TẬP:</strong> CHU KHÁNH VY</div>
+        <div class="card"><strong>LỚP PHÓ VĂN THỂ MỸ:</strong> NGUYỄN HOÀNG THIÊN TUẤN</div>
+        <div class="card"><strong>LỚP PHÓ KỶ LUẬT:</strong> PHÙNG VÕ QUỐC HOÀN</div>
+        <div class="card"><strong>LỚP PHÓ LAO ĐỘNG:</strong> NGUYỄN HOÀNG ANH</div>
+        <div class="card"><strong>THỦ QUỸ:</strong> HỒ NGỌC BẢO KHANH</div>
+        <div class="card"><strong>TỔ TRƯỞNG TỔ 1:</strong> TRẦN NGUYỄN KHÔI</div>
+        <div class="card"><strong>TỔ TRƯỞNG TỔ 2:</strong> TRẦN NGÔ THANH KHOA</div>
+        <div class="card"><strong>TỔ TRƯỞNG TỔ 3:</strong> BÙI NGUYỄN HUY HOÀNG</div>
+        <div class="card"><strong>TỔ TRƯỞNG TỔ 4:</strong> LÒ HỒNG BẢO NGỌC</div>
+    </div>
+</section>
+
+<section id="hoctap">
+    <h2>Kho Tàng Tri Thức</h2>
+    <div class="link-box">
+        <p><strong>TÀI LIỆU ÔN TẬP:</strong> Các bài giảng và bài tập hàng tuần.</p>
+       <a href="https://thuvienhoclieu.com" class="btn-link">Truy cập trạm dữ liệu</a> 
+    </div>
+    <div class="link-box">
+        <p><strong>TÀI LIỆU ÔN THI:</strong> Đề thi thử và đề cương ôn thi học kỳ.</p>
+        <a href="http://buithixuandalat.edu.vn/tin-tuc-su-kien/tong-hop-de-cuong-ma-tran-kiem-tra-giua-hk1-nam-hoc-2025-2026.html?categoryId=14593260" class="btn-link">Kết nối máy chủ đề thi</a>
+    </div>
+</section>
+
+<section id="kyniem">
+    <h2>Tinh Vân Kỷ Niệm</h2>
+    
+    <div class="memory-item">
+        <img src="image_10_1.jpg" alt="Kỷ niệm 1">
+        <img src="image_10_2.jpg" alt="Kỷ niệm 2">
+        <p class="caption">Hành trình bắt đầu: Những bước chân đầu tiên vào dải ngân hà mới.</p>
+    </div>
+
+    <div class="memory-item">
+        <img src="image_20_11_1.jpg" alt="Kỷ niệm 1">
+        <img src="image_20_11_2.jpg" alt="Kỷ niệm 2">
+        <video src="video_20_11.mp4" controls></video>
+        <p class="caption">Ngày quốc tế phụ nữ 20/11/2025.</p>
+    </div>
+
+    <div class="memory-item">
+        <img src="image_teambuilding_1.jpg" alt="Kỷ niệm 1">
+        <img src="image_teambuilding_2.jpg" alt="Kỷ niệm 2">
+        <img src="image_teambuilding_3.jpg" alt="Kỷ niệm 3">
+        <video src="video_teambuilding.mp4" controls></video>
+        <p class="caption">Hành trình teambuilding của tập thể lớp 12a5.</p>
+    </div>
+</section>
+
+<section id="camnghi">
+    <h2>Tín Hiệu Từ 44 Thành Viên</h2>
+    <p><small>*ĐÂY LÀ BỘ NHỚ LƯU GIỮ KỸ NIỆM</small></p>
+    <div class="thoughts-grid" id="thought-container"></div>
+</section>
+
+<footer>
+    <p>&copy; 2025-2026 - Khám phá Vũ Trụ Lớp Học | Design by TỔ 4 12A5</p>
+    <H3>THÀNH VIÊN TỔ 4</H3>
+    <p>LÒ HỒNG BẢO NGỌC</p>
+    <p>TRỊNH NHƯ TRÂM ANH</p>
+    <p>HỒ NGỌC BẢO KHANH</p>
+    <p>TRẦN THỊ BÍCH LÀI</p>
+    <p>ĐINH THỊ TRÚC LINH</p>
+    <p>NGUYỄN VŨ MINH HIẾU</p>
+    <p>NGUYỄN MINH HẰNG</p>
+    <p>NGUYỄN HOÀNG THIÊN TUẤN</p>
+    <p>NGUYỄN TRẦN KHÁNH LY</p>
+    <p>TRẦN HUỲNH NHƯ</p>
+    <p>TRẦN HUỲNH XUÂN TRINH</p>
+    <p>TRẦN ĐĂNG KHOA</p>
+</footer>
+
+<script>
+    const container = document.getElementById('thought-container');
+    for (let i = 1; i <= 44; i++) {
+        const div = document.createElement('div');
+        div.className = 'thought-box';
+        const savedText = localStorage.getItem('thought-' + i) || "";
+        div.innerHTML = `
+            <strong>Phi hành gia số ${i}</strong>
+            <textarea id="input-${i}" placeholder="Gửi thông điệp vào vũ trụ...">${savedText}</textarea>
+            <button onclick="saveThought(${i})">Truyền phát tin</button>
+        `;
+        container.appendChild(div);
+    }
+
+    function saveThought(id) {
+        const text = document.getElementById('input-' + id).value;
+        localStorage.setItem('thought-' + id, text);
+        alert('Tín hiệu của bạn số ' + id + ' đã được ghi lại!');
+    }
+</script>
+
+</body>
+</html>
